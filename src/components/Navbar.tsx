@@ -4,6 +4,16 @@ import { FaXmark } from "react-icons/fa6";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
+
+  const navLinks = [
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
+    { name: "Experience", href: "#experience" },
+    { name: "Contact", href: "#contact" },
+  ];
+
   return (
     <nav
       className="fixed w-full z-50 bg-dark-100/90 backdrop-blur-sm py-4 px-8
@@ -16,77 +26,56 @@ const Navbar = () => {
             <span className="text-red-500">TÜRKMENOĞLU</span>
           </a>
         </div>
+        {/* Desktop Menu */}
         <div className="hidden md:flex space-x-10">
-          <a
-            href="#home"
-            className="relative text-white/80 transition duration-300 hover:text-red-500 group "
-          >
-            <span>Home</span>
-            <span
-              className="absolute left-0 -bottom-1 w-0 h-0.5 bg-red-500
+          {navLinks.map((link, index) => (
+            <a
+              href={link.href}
+              key={index}
+              className="relative text-white/80 transition duration-300 hover:text-red-500 group "
+            >
+              <span>{link.name}</span>
+              <span
+                className="absolute left-0 -bottom-1 w-0 h-0.5 bg-red-500
             transition-all duration-300 group-hover:w-full"
-            ></span>
-          </a>
-          <a
-            href="#about"
-            className="relative text-white/80 transition duration-300 hover:text-red-500 group "
-          >
-            <span>About</span>
-            <span
-              className="absolute left-0 -bottom-1 w-0 h-0.5 bg-red-500
-            transition-all duration-300 group-hover:w-full"
-            ></span>
-          </a>
-          <a
-            href="#skilss"
-            className="relative text-white/80 transition duration-300 hover:text-red-500 group "
-          >
-            <span>Skilss</span>
-            <span
-              className="absolute left-0 -bottom-1 w-0 h-0.5 bg-red-500
-            transition-all duration-300 group-hover:w-full"
-            ></span>
-          </a>
-          <a
-            href="#projects"
-            className="relative text-white/80 transition duration-300 hover:text-red-500 group "
-          >
-            <span>Projects</span>
-            <span
-              className="absolute left-0 -bottom-1 w-0 h-0.5 bg-red-500
-            transition-all duration-300 group-hover:w-full"
-            ></span>
-          </a>
-          <a
-            href="#experience"
-            className="relative text-white/80 transition duration-300 hover:text-red-500 group "
-          >
-            <span>Experience</span>
-            <span
-              className="absolute left-0 -bottom-1 w-0 h-0.5 bg-red-500
-            transition-all duration-300 group-hover:w-full"
-            ></span>
-          </a>
-          <a
-            href="#contact"
-            className="relative text-white/80 transition duration-300 hover:text-red-500 group "
-          >
-            <span>Contact</span>
-            <span
-              className="absolute left-0 -bottom-1 w-0 h-0.5 bg-red-500
-            transition-all duration-300 group-hover:w-full"
-            ></span>
-          </a>
+              ></span>
+            </a>
+          ))}
         </div>
         {/* Mobile button */}
         <div className="md:hidden">
           {showMenu ? (
-            <FaXmark className="text-2xl cursor-pointer" />
+            <FaXmark
+              onClick={() => setShowMenu(!showMenu)}
+              className="text-2xl cursor-pointer"
+            />
           ) : (
-            <FaXmark className="text-2xl cursor-pointer" />
+            <FaBars
+              onClick={() => setShowMenu(!showMenu)}
+              className="text-2xl cursor-pointer"
+            />
           )}
         </div>
       </div>
+
+      {/* Mobile menus */}
+      {showMenu && (
+        <div
+          className="md:hidden mt-4 bg-dark-300 h-screen rounded-lg p-4
+            flex flex-col space-y-4  text-center justify-center"
+        >
+          {navLinks.map((link,index) => (
+            <a
+              href={link.href}
+              key={index}
+              onClick={() => setShowMenu(!showMenu)}
+              className="relative text-white/80 transition duration-300 hover:text-red-500 group "
+            >
+              <span>{link.name}</span>
+            </a>
+          ))}
+        </div>
+      )}
     </nav>
   );
 };
