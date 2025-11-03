@@ -76,11 +76,11 @@ const Navbar = () => {
             transition-all duration-300 group-hover:w-full"
             ></span>
           </a>
+          <div className="md:hidden">
+            <FaBars />
+            <FaXmark />
+          </div>
         </div>
-      </div>
-      <div className="md:hidden">
-        <FaBars/>
-        <FaXmark/>
       </div>
     </nav>
   );
