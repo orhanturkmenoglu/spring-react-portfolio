@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
 
 const Navbar = () => {
+  const [showMenu, setShowMenu] = useState(false);
   return (
     <nav
       className="fixed w-full z-50 bg-dark-100/90 backdrop-blur-sm py-4 px-8
@@ -76,10 +77,14 @@ const Navbar = () => {
             transition-all duration-300 group-hover:w-full"
             ></span>
           </a>
-          <div className="md:hidden">
-            <FaBars />
-            <FaXmark />
-          </div>
+        </div>
+        {/* Mobile button */}
+        <div className="md:hidden">
+          {showMenu ? (
+            <FaXmark className="text-2xl cursor-pointer" />
+          ) : (
+            <FaXmark className="text-2xl cursor-pointer" />
+          )}
         </div>
       </div>
     </nav>
