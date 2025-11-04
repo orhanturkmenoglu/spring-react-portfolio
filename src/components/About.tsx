@@ -1,8 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { assets, aboutInfo } from "../assets/assets";
+import { assets /* aboutInfo */ } from "../assets/assets";
+import axios from "axios";
+import * as FaIcons from "react-icons/fa";
 
 const About = () => {
+  const [aboutInfoData, setAboutInfoData] = useState([]);
+  console.log("About Info :", aboutInfoData);
+
+  const fetchAboutInfoList = async () => {
+    try {
+      const response = await axios.get("http://localhost:8080/api/v1.0/abouts");
+      if (response.status === 200) {
+        setAboutInfoData(response.data);
+        console.log("response data :", response.data);
+      }
+    } catch (error) {
+      console.log("Error fetching about data", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchAboutInfoList();
+  }, []);
+
   return (
     <motion.section
       id="about"
@@ -75,21 +96,27 @@ const About = () => {
 
             {/* ===== Info Cards ===== */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              {aboutInfo.map((item, index) => {
-                const Icon = item.icon;
+              {aboutInfoData.map((item, index) => {
+                const IconComponent = FaIcons[item.icon]; // 👈 stringi bileşene dönüştür
                 return (
                   <motion.div
                     key={index}
                     whileHover={{ y: -6 }}
                     transition={{ duration: 0.3 }}
                     className="bg-[#1b1b1b]/70 border border-white/10 rounded-2xl p-6 text-center 
-                    hover:shadow-md hover:shadow-red-500/20 transition-all duration-300"
+        hover:shadow-md hover:shadow-red-500/20 transition-all duration-300"
                   >
                     <div
                       className={`flex justify-center items-center w-14 h-14 rounded-xl mx-auto mb-4
-                      bg-gradient-to-br from-[#2a2a2a] to-[#1a1a1a]`}
+          bg-gradient-to-br from-[#2a2a2a] to-[#1a1a1a]`}
                     >
-                      <Icon className={`text-3xl text-${item.color}-400`} />
+                      {IconComponent ? (
+                        <IconComponent
+                          className={`text-3xl text-${item.color}-400`}
+                        />
+                      ) : (
+                        <FaIcons.FaQuestionCircle className="text-3xl text-gray-400" /> // fallback
+                      )}
                     </div>
                     <h4 className="text-lg font-semibold text-white mb-2">
                       {item.title}
