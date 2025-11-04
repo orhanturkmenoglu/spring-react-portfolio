@@ -7,6 +7,7 @@ import Skills from './components/Skills.tsx';
 import Projects from './components/Projects.tsx';
 import Work from "./components/Work.tsx"
 import Contact from './components/Contact.tsx';
+import Footer from './components/Footer.tsx';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Route path='/projects' element={<Projects/>}/>
         <Route path='/work' element={<Work/>}/>
         <Route path='/contact' element={<Contact/>}/>
+        <Route path='/footer' element={<Footer/>}/>
       </Routes>
     </div>
   )
