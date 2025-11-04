@@ -8,9 +8,9 @@ const About = () => {
       id="about"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
       viewport={{ once: true }}
-      className="py-24 bg-gradient-to-b from-dark-200 via-dark-300 to-dark-200"
+      className="py-24 bg-gradient-to-b from-[#141414] via-[#1d1d1d] to-[#141414]"
     >
       <div className="container mx-auto px-6">
         {/* ===== Heading ===== */}
@@ -32,22 +32,22 @@ const About = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            {/* Gradient border effect */}
-            <div className="relative rounded-2xl p-1 bg-gradient-to-tr from-red-500 via-purple-500 to-blue-500">
+            {/* Gradient border */}
+            <div className="relative rounded-2xl p-[2px] bg-gradient-to-tr from-red-500 via-purple-500 to-blue-500 shadow-lg shadow-red-500/10">
               <img
                 src={assets.profileImg}
                 alt="Profile"
-                className="rounded-2xl w-64 h-80 object-cover border-4 border-dark-300 shadow-2xl"
+                className="rounded-2xl w-64 h-80 object-cover border-4 border-[#1d1d1d]"
               />
             </div>
 
-            {/* Subtle glow effect */}
-            <div className="absolute inset-0 blur-3xl opacity-20 bg-red-500 rounded-2xl"></div>
+            {/* Glow effect */}
+            <div className="absolute inset-0 blur-3xl opacity-25 bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 rounded-2xl"></div>
           </motion.div>
 
           {/* Right Content */}
           <motion.div
-            className="md:w-2/3 backdrop-blur-lg bg-dark-400/40 border border-white/10 rounded-3xl p-10 shadow-xl"
+            className="md:w-2/3 backdrop-blur-xl bg-[#1f1f1f]/60 border border-white/10 rounded-3xl p-10 shadow-lg shadow-black/40"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -58,12 +58,12 @@ const About = () => {
 
             <p className="text-gray-300 leading-relaxed mb-6">
               I’m a creative software developer focused on building elegant,
-              high-performance applications with a great user experience.
+              high-performance applications with great user experience.
             </p>
 
             <p className="text-gray-300 leading-relaxed mb-12">
-              With every project, I aim to write clean code, create delightful
-              interfaces, and push the boundaries of modern web development.
+              Every line of code I write aims to be clean, efficient, and
+              purposeful — bridging backend power with seamless UI.
             </p>
 
             {/* ===== Info Cards ===== */}
@@ -71,22 +71,24 @@ const About = () => {
               {aboutInfo.map((item, index) => {
                 const Icon = item.icon;
                 return (
-                  <div
+                  <motion.div
                     key={index}
-                    className="bg-dark-500/50 border border-white/10 rounded-2xl p-6 text-center 
-                    hover:-translate-y-2 hover:shadow-lg hover:shadow-red-500/10 transition-all duration-300"
+                    whileHover={{ y: -6 }}
+                    transition={{ duration: 0.3 }}
+                    className="bg-[#1b1b1b]/70 border border-white/10 rounded-2xl p-6 text-center 
+                    hover:shadow-md hover:shadow-red-500/20 transition-all duration-300"
                   >
                     <div
-                      className={`flex justify-center items-center w-14 h-14 rounded-xl mx-auto mb-4 
-                      bg-gradient-to-br from-dark-200 to-dark-400`}
+                      className={`flex justify-center items-center w-14 h-14 rounded-xl mx-auto mb-4
+                      bg-gradient-to-br from-[#2a2a2a] to-[#1a1a1a]`}
                     >
-                      <Icon className={`text-3xl ${item.color}-500`} />
+                      <Icon className={`text-3xl text-${item.color}-400`} />
                     </div>
                     <h4 className="text-lg font-semibold text-white mb-2">
                       {item.title}
                     </h4>
                     <p className="text-gray-400 text-sm">{item.description}</p>
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>

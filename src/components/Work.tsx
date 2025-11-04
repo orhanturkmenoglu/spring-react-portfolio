@@ -4,29 +4,31 @@ import { workData } from "../assets/assets";
 
 const Experience = () => {
   return (
-    <motion.div
+    <motion.section
+      id="experience"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, ease: "easeOut" }}
-      viewport={{ once: false, amount: 0.2 }}
-      id="experience"
-      className="py-24 my-20 bg-dark-100"
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.2 }}
+      className="py-24 bg-gradient-to-b from-[#141414] via-[#1a1a1a] to-[#141414]"
     >
       <div className="container mx-auto px-6">
-        {/* Başlık */}
-        <h2 className="text-3xl font-semibold text-center mb-4">
-          <span className="text-red-500">Experience</span>
-        </h2>
-        <p className="text-gray-400 text-center max-w-2xl mx-auto mb-16">
-          My professional journey so far
-        </p>
+        {/* ===== Heading ===== */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            My <span className="text-red-500">Experience</span>
+          </h2>
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            A glimpse into my professional journey and growth.
+          </p>
+        </div>
 
-        {/* Timeline Container */}
+        {/* ===== Timeline Container ===== */}
         <div className="max-w-3xl mx-auto relative">
-          {/* Dikey Çizgi */}
-          <div className="absolute left-5 top-0 w-[2px] h-full bg-gray-700"></div>
+          {/* Gradient Line */}
+          <div className="absolute left-6 top-0 w-[3px] h-full bg-gradient-to-b from-red-500 via-purple-500 to-blue-500 rounded-full"></div>
 
-          <div className="space-y-12">
+          <div className="space-y-12 relative">
             {workData.map((item, index) => (
               <motion.div
                 key={index}
@@ -34,20 +36,22 @@ const Experience = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className="relative pl-12"
+                className="relative pl-16"
               >
-                {/* Nokta */}
+                {/* Timeline Dot */}
                 <div
-                  className={`absolute left-[6px] top-2 w-4 h-4 rounded-full bg-${item.color}-500 border-2 border-white`}
+                  className={`absolute left-[6px] top-6 w-5 h-5 rounded-full bg-${item.color}-500 border-4 border-[#1a1a1a] shadow-md shadow-${item.color}-500/40`}
                 ></div>
 
-                {/* İçerik */}
-                <div className="bg-dark-200 p-6 rounded-xl shadow-lg hover:-translate-y-1 transition-all duration-300">
-                  <h3 className="text-xl font-semibold text-white">
+                {/* Card */}
+                <div className="bg-[#1e1e1e]/80 border border-white/10 rounded-2xl p-6 shadow-lg backdrop-blur-md hover:-translate-y-2 transition-all duration-300 hover:shadow-red-500/20">
+                  <h3 className="text-xl font-semibold text-white mb-1">
                     {item.role}
                   </h3>
-                  <p className="text-gray-400 text-sm">{item.company}</p>
-                  <p className="text-gray-500 text-sm mb-3">{item.duration}</p>
+                  <p className="text-gray-400 text-sm mb-1">{item.company}</p>
+                  <p className="text-gray-500 text-sm mb-3 italic">
+                    {item.duration}
+                  </p>
                   <p className="text-gray-300 leading-relaxed">
                     {item.description}
                   </p>
@@ -57,7 +61,7 @@ const Experience = () => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </motion.section>
   );
 };
 

@@ -1,39 +1,62 @@
 import { motion } from "framer-motion";
-import { assets } from "./../assets/assets";
+import { assets } from "../assets/assets";
 
 const Hero = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      viewport={{ once: true }}
+    <motion.section
       id="home"
-      className="min-h-screen flex items-center pt-20 pb-16 bg-gradient-to-r from-[#1a1a1a] via-[#2d2d2d] to-[#1a1a1a]"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      viewport={{ once: true }}
+      className="min-h-screen flex items-center justify-center pt-24 pb-16 bg-gradient-to-r from-[#141414] via-[#1f1f1f] to-[#141414]"
     >
-      <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
-        {/* Left side content */}
-        <div className="md:w-1/2 mb-10 md:mb-0 text-center md:text-left">
-          <h1 className="text-4xl md:text-6xl font-semibold text-white leading-tight">
+      <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-10">
+        {/* Left Side Content */}
+        <div className="md:w-1/2 text-center md:text-left">
+          <motion.h1
+            className="text-4xl md:text-6xl font-extrabold text-white leading-tight"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             Hi, I'm{" "}
-            <span className="text-red-500 font-bold">Orhan TÜRKMENOĞLU</span>
-          </h1>
+            <span className="text-red-500 font-extrabold">
+              Orhan TÜRKMENOĞLU
+            </span>
+          </motion.h1>
 
-          <h2 className="text-2xl md:text-4xl font-extrabold mb-6 mt-5 text-gray-200 typewriter">
+          <motion.h2
+            className="text-2xl md:text-4xl font-semibold mt-4 mb-6 text-blue-400"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+          >
             Full Stack Developer
-          </h2>
+          </motion.h2>
 
-          <p className="text-lg text-gray-400 mb-8 max-w-md mx-auto md:mx-0">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto,
-            beatae?
-          </p>
+          <motion.p
+            className="text-gray-400 text-lg mb-8 max-w-md mx-auto md:mx-0"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Passionate about crafting scalable web applications with modern
+            technologies — blending clean backend architecture with elegant,
+            responsive UI.
+          </motion.p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             <a
               href="#projects"
-              className="px-6 py-3 bg-red-500 rounded-lg font-medium text-white hover:bg-red-600 transition duration-300 shadow-md hover:shadow-red-500/30"
+              className="px-6 py-3 bg-red-500 rounded-lg font-medium text-white hover:bg-red-600 transition duration-300 shadow-md hover:shadow-red-500/40"
             >
-              View Work
+              View Projects
             </a>
 
             <a
@@ -42,34 +65,33 @@ const Hero = () => {
             >
               Contact Me
             </a>
-          </div>
+          </motion.div>
         </div>
 
-        {/* right side image */}
-        <div className="md:w-1/2 flex justify-center">
+        {/* Right Side Image */}
+        <motion.div
+          className="md:w-1/2 flex justify-center relative"
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
           <div className="relative w-64 h-64 md:w-80 md:h-80">
-            <div
-              className="absolute inset-0 rounded-full
-                bg-gradient-to-r from-purple to-pink
-                opacity-70"
-            >
-              <motion.img
-                animate={{ y: [0, -20, 0] }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  ease: "easeInOut",
-                }}
-                className="relative rounded-full w-64 h-64 md:w-80 md:h-80 object-cover z-10 animate-float"
-                src={assets.profileImg}
-                alt="profile"
-              />
-            </div>
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 blur-2xl opacity-40 animate-pulse"></div>
+            <motion.img
+              animate={{ y: [0, -15, 0] }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="relative rounded-full w-64 h-64 md:w-80 md:h-80 object-cover border-4 border-gray-800 shadow-lg"
+              src={assets.profileImg}
+              alt="profile"
+            />
           </div>
-        </div>
+        </motion.div>
       </div>
-    </motion.div>
+    </motion.section>
   );
 };
 

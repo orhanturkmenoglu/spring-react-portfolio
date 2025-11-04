@@ -18,7 +18,7 @@ const Projects = () => {
         {/* ===== Heading ===== */}
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-5">
-            My <span className="text-purple-500">Projects</span>
+            My <span className="text-red-500">Projects</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
             A showcase of projects where{" "}

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const navLinks = [
     { name: "Home", href: "#home" },
@@ -14,69 +15,74 @@ const Navbar = () => {
     { name: "Contact", href: "#contact" },
   ];
 
+  // Scroll olunca arka plan değişsin
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  const handleClick = ()=>{
-     setShowMenu(!showMenu)
-  }
+  const handleClick = () => {
+    setShowMenu(!showMenu);
+  };
 
   return (
     <nav
-      className="fixed w-full z-50 bg-dark-100/90 backdrop-blur-sm py-4 px-8
-    shadow-lg "
+      className={`fixed w-full z-50 py-4 px-8 transition-all duration-500 ${
+        isScrolled
+          ? "bg-[#0b0b0b]/90 backdrop-blur-lg shadow-lg shadow-red-500/10"
+          : "bg-transparent"
+      }`}
     >
       <div className="container mx-auto flex justify-between items-center">
-        <div>
-          <a href="#" className="text-3xl text-white font-semibold">
-            Orhan
-            <span className="text-red-500">TÜRKMENOĞLU</span>
-          </a>
-        </div>
-        {/* Desktop Menu */}
+        {/* Logo */}
+        <a
+          href="#home"
+          className="text-2xl md:text-3xl font-bold text-white tracking-wide"
+        >
+          <span className="text-white">Orhan</span>
+          <span className="text-red-500">Türkmenoğlu</span>
+        </a>
+
+        {/* === Desktop Menü === */}
         <div className="hidden md:flex space-x-10">
           {navLinks.map((link, index) => (
             <a
               href={link.href}
               key={index}
-              className="relative text-white/80 transition duration-300 hover:text-red-500 group "
+              className="relative text-gray-300 hover:text-red-500 font-medium transition-all duration-300 group"
             >
-              <span>{link.name}</span>
+              {link.name}
               <span
-                className="absolute left-0 -bottom-1 w-0 h-0.5 bg-red-500
-            transition-all duration-300 group-hover:w-full"
+                className="absolute left-0 -bottom-1 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"
               ></span>
             </a>
           ))}
         </div>
-        {/* Mobile button */}
-        <div className="md:hidden">
+
+        {/* === Mobil Menü Butonu === */}
+        <div className="md:hidden text-white text-2xl cursor-pointer">
           {showMenu ? (
-            <FaXmark
-              onClick={() => setShowMenu(!showMenu)}
-              className="text-2xl cursor-pointer"
-            />
+            <FaXmark onClick={handleClick} />
           ) : (
-            <FaBars
-              onClick={() => setShowMenu(!showMenu)}
-              className="text-2xl cursor-pointer"
-            />
+            <FaBars onClick={handleClick} />
           )}
         </div>
       </div>
 
-      {/* Mobile menus */}
+      {/* === Mobil Menü === */}
       {showMenu && (
-        <div
-          className="md:hidden mt-4 bg-dark-300 h-screen rounded-lg p-4
-            flex flex-col space-y-4  text-center justify-center"
-        >
-          {navLinks.map((link,index) => (
+        <div className="md:hidden mt-4 bg-[#121212] rounded-lg p-6 flex flex-col space-y-6 text-center">
+          {navLinks.map((link, index) => (
             <a
               href={link.href}
               key={index}
               onClick={handleClick}
-              className="relative text-white/80 transition duration-300 hover:text-red-500 group "
+              className="text-gray-300 hover:text-red-500 font-medium transition-all duration-300"
             >
-              <span>{link.name}</span>
+              {link.name}
             </a>
           ))}
         </div>
