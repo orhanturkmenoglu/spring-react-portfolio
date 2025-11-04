@@ -14,6 +14,11 @@ const Navbar = () => {
     { name: "Contact", href: "#contact" },
   ];
 
+
+  const handleClick = ()=>{
+     setShowMenu(!showMenu)
+  }
+
   return (
     <nav
       className="fixed w-full z-50 bg-dark-100/90 backdrop-blur-sm py-4 px-8
@@ -68,7 +73,7 @@ const Navbar = () => {
             <a
               href={link.href}
               key={index}
-              onClick={() => setShowMenu(!showMenu)}
+              onClick={handleClick}
               className="relative text-white/80 transition duration-300 hover:text-red-500 group "
             >
               <span>{link.name}</span>
