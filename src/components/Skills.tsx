@@ -16,7 +16,7 @@ const Skills = () => {
         {/* ===== Heading ===== */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            My <span className="text-purple-500">Skills</span>
+            My <span className="text-red-500">Skills</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
             Technologies and tools I use to turn ideas into clean, functional and scalable solutions.
@@ -46,7 +46,7 @@ const Skills = () => {
                 {/* Icon and Title */}
                 <div className="flex items-center gap-4 mb-4 relative z-10">
                   <div className="p-3 rounded-xl bg-gradient-to-br from-purple-600/20 to-purple-900/10">
-                    <Icon className="text-3xl text-purple-500" />
+                    <Icon className="text-3xl text-red-500" />
                   </div>
                   <h3 className="text-xl font-semibold text-white">
                     {skill.title}
