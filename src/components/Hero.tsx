@@ -27,12 +27,12 @@ const Hero = () => {
           </motion.h1>
 
           <motion.h2
-            className="text-2xl md:text-4xl font-semibold mt-4 mb-6 text-blue-400"
+            className="text-2xl md:text-4xl font-semibold mt-4 mb-6 text-blue-400 typewriter"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
           >
-            Full Stack Developer
+            Full Stack Java Developer
           </motion.h2>
 
           <motion.p
@@ -41,11 +41,12 @@ const Hero = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Passionate about crafting scalable web applications with modern
-            technologies — blending clean backend architecture with elegant,
-            responsive UI.
+            Experienced in building enterprise-grade backend systems with Java
+            and Spring Boot. Skilled in microservices, Clean Architecture, and
+            secure authentication with JWT and OAuth2. Passionate about
+            developing scalable fintech solutions and crafting modern UIs with
+            React.
           </motion.p>
-
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
             initial={{ opacity: 0, y: 20 }}

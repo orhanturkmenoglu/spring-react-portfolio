@@ -1,4 +1,4 @@
-import { FaLightbulb, FaPaintBrush, FaCode, FaReact, FaServer, FaMobileAlt, FaTools, FaNodeJs, FaStripe, FaVuejs, FaFire, FaDatabase, FaCloud, FaRobot } from 'react-icons/fa';
+import { FaLightbulb,FaShieldAlt, FaPaintBrush, FaCode, FaReact, FaServer, FaMobileAlt, FaTools, FaNodeJs, FaStripe, FaVuejs, FaFire, FaDatabase, FaCloud, FaRobot, FaAws, FaDocker, FaJava } from 'react-icons/fa';
 
 import profileImg from '../assets/profile.jpg';
 import projectImg1 from '../assets/project1.avif';
@@ -8,157 +8,167 @@ import projectImg4 from '../assets/project4.avif';
 import projectImg5 from '../assets/project5.avif';
 import projectImg6 from '../assets/project6.avif';
 
-
 export const assets = {
     profileImg,
-}
-
+};
 
 export const aboutInfo = [
-    {
-      icon: FaLightbulb,
-      title: 'Innovative',
-      description: 'I love creating unique solutions to complex problems with cutting-edge technologies.',
-      color: 'text-purple'
-    },
-    {
-      icon: FaPaintBrush,
-      title: 'Design Oriented',
-      description: 'Beautiful design and user experience are at the heart of everything I create.',
-      color: 'text-pink'
-    },
-    {
-      icon: FaCode,
-      title: 'Clean Code',
-      description: 'I write maintainable, efficient code following best practices and modern patterns.',
-      color: 'text-blue'
-    }
-  ];
-
-
+  {
+    icon: FaLightbulb,
+    title: 'Innovative',
+    description: 'Creating secure and scalable solutions for complex problems with modern technologies.',
+    color: 'purple'
+  },
+  {
+    icon: FaCode,
+    title: 'Clean Code',
+    description: 'Writing maintainable, efficient code using Clean Architecture and DDD principles.',
+    color: 'blue'
+  },
+  {
+    icon: FaPaintBrush,
+    title: 'UI/UX Focused',
+    description: 'Building intuitive, modern, and responsive user interfaces with React.',
+    color: 'pink'
+  }
+];
 
 export const skills = [
   {
     title: 'Frontend Development',
     icon: FaReact,
-    description: 'Building responsive and interactive user interfaces with modern frameworks.',
-    tags: ['React', 'Vue.js', 'Angular', 'TypeScript']
+    description: 'Crafting interactive and responsive interfaces with ReactJS and modern frameworks.',
+    tags: ['React', 'TypeScript', 'TailwindCSS', 'Next.js']
   },
   {
     title: 'Backend Development',
     icon: FaServer,
-    description: 'Creating robust server-side applications and RESTful APIs.',
-    tags: ['Node.js', 'Express', 'Django', 'Laravel']
-  },
-  {
-    title: 'Database Management',
-    icon: FaDatabase,
-    description: 'Designing and optimizing databases for performance and scalability.',
-    tags: ['MongoDB', 'PostgreSQL', 'MySQL', 'Firebase']
-  },
-  {
-    title: 'Mobile Development',
-    icon: FaMobileAlt,
-    description: 'Building cross-platform mobile applications with modern tools.',
-    tags: ['React Native', 'Flutter', 'Ionic', 'Swift']
+    description: 'Developing robust backend services, RESTful APIs, and microservices with Java & Spring Boot.',
+    tags: ['Java', 'Spring Boot', 'Spring Cloud', 'Node.js', 'OAuth2', 'JWT']
   },
   {
     title: 'Cloud & DevOps',
     icon: FaCloud,
-    description: 'Deploying and managing applications in cloud environments.',
+    description: 'Deploying scalable, high-availability applications on cloud infrastructure.',
     tags: ['AWS', 'Docker', 'Kubernetes', 'CI/CD']
+  },
+  {
+    title: 'Database Management',
+    icon: FaDatabase,
+    description: 'Designing and optimizing relational and NoSQL databases for enterprise applications.',
+    tags: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis']
+  },
+  {
+    title: 'FinTech & Payments',
+    icon: FaStripe,
+    description: 'Developing secure payment systems and digital wallet solutions.',
+    tags: ['Stripe', 'PayPal API', 'Open Banking', 'Transaction Systems']
   },
   {
     title: 'Tools & Technologies',
     icon: FaTools,
-    description: 'Essential tools and technologies I use in my development workflow.',
-    tags: ['Git & GitHub', 'Webpack', 'Figma', 'Jest']
+    description: 'Efficient workflow with essential developer tools.',
+    tags: ['Git', 'GitHub', 'Jira', 'Postman', 'VSCode']
   }
 ];
-
-
 
 export const projects = [
   {
-    title: "E-Commerce Platform",
-    description: "A full-featured online store with shopping cart, user authentication, and payment processing.",
+    title: "Money Manager – Personal Finance Tracker",
+    description: "Full-stack personal finance app with React, Tailwind CSS & Spring Boot. Track income, expenses, manage categories, apply filters, export data to Excel, and use secure JWT authentication.",
     image: projectImg1,
-    tech: ["React", "Node.js", "MongoDB", "Stripe"],
-    icons: [FaReact, FaNodeJs, FaDatabase , FaStripe],
-    demo: "#",
-    code: "#",
+    tech: ["React", "Tailwind CSS", "Spring Boot", "JWT", "Email", "Excel Export"],
+    icons: [FaReact, FaDatabase, FaServer],
+    demo: "https://astonishing-rugelach-8e59b3.netlify.app",
+    code: "https://github.com/orhanturkmenoglu/money-manager"
   },
   {
-    title: "Task Management App",
-    description: "A productivity application with drag-and-drop functionality and real-time updates.",
+    title: "E-Commerce SpringBoot – Microservices Platform",
+    description: "Mikroservis tabanlı e-commerce uygulaması. Servis kaydı, API Gateway, Resilience4J, RabbitMQ, Stripe ödeme ve otomatik sepet temizleme gibi modern mikroservis kavramlarını içerir.",
     image: projectImg2,
-    tech: ["Vue.js", "Firebase", "Tailwind CSS", "WebSockets"],
-    icons: [FaVuejs, FaFire, FaCloud , FaDatabase],
+    tech: ["Spring Boot", "Spring Cloud", "Docker", "RabbitMQ", "Stripe", "JWT"],
+    icons: [FaServer, FaDatabase, FaCloud, FaStripe],
     demo: "#",
-    code: "#",
+    code: "https://github.com/orhanturkmenoglu/e-commerce-springboot"
   },
   {
-    title: "Fitness Tracker",
-    description: "A mobile app for tracking workouts, nutrition, and health metrics.",
+    title: "Foodies – Full Stack Food Ordering Platform",
+    description: "React + Spring Boot tabanlı yemek sipariş uygulaması. JWT güvenlik, Stripe ödeme, admin paneli, mail yönetimi ve gerçek zamanlı sepet yönetimi içerir.",
     image: projectImg3,
-    tech: ["React Native", "GraphQL", "MySQL", "Chart.js"],
-    icons: [FaReact, FaDatabase],
-    demo: "#",
-    code: "#",
+    tech: ["React", "Spring Boot", "JWT", "Stripe", "PostgreSQL", "Tailwind CSS"],
+    icons: [FaReact, FaServer, FaStripe],
+    demo: "https://astonishing-rugelach-8e59b3.netlify.app/",
+    code: "https://github.com/orhanturkmenoglu/foodies-netlify"
   },
   {
-    title: "Portfolio Website",
-    description: "A personal portfolio to showcase projects, skills, and blogs with dark/light mode support.",
+    title: "SecurePay QR – Modern Payment Platform",
+    description: "Stripe ile entegre, gerçek zamanlı ödeme takibi ve otomatik QR kod üretimi sağlayan, güvenli ve ölçeklenebilir Spring Boot tabanlı ödeme platformu.",
     image: projectImg4,
-    tech: ["Next.js", "Tailwind CSS", "Framer Motion", "Markdown"],
-    icons: [FaReact, FaCloud],
+    tech: ["Spring Boot", "Stripe API", "JWT", "QR Codes"],
+    icons: [FaServer, FaStripe, FaMobileAlt],
     demo: "#",
-    code: "#",
+    code: "https://github.com/orhanturkmenoglu/securepay-qr"
   },
   {
-    title: "Chat App",
-    description: "A real-time chat application with group messaging, emojis, and file sharing.",
+    title: "Spring AI Image API",
+    description: "Yapay zekâ destekli görsel oluşturma REST API servisi. Spring Boot & WebClient ile OpenAI gibi AI modellerine istek gönderir, Base64 formatında görsel döner.",
     image: projectImg5,
-    tech: ["Socket.IO", "React", "Node.js", "MongoDB"],
-    icons: [FaReact, FaNodeJs, FaDatabase ],
+    tech: ["Spring Boot", "OpenAI API", "REST API", "WebClient"],
+    icons: [FaServer, FaRobot],
     demo: "#",
-    code: "#",
+    code: "https://github.com/orhanturkmenoglu/spring-ai-image-api"
   },
   {
-    title: "AI Image Generator",
-    description: "Generate images using AI prompts powered by OpenAI's DALL·E model and Cloudinary.",
+    title: "Spring Security Mernis Authentication",
+    description: "MER-NIS Web Servisi ile TCKN doğrulaması yapan, JWT tabanlı güvenli oturum yönetimi sağlayan Spring Security uygulaması.",
     image: projectImg6,
-    tech: ["React", "OpenAI API", "Cloudinary", "Tailwind CSS"],
-    icons: [FaRobot, FaReact, FaCloud],
+    tech: ["Spring Boot", "Spring Security", "JWT", "MERNIS API"],
+    icons: [FaServer, FaShieldAlt],
     demo: "#",
-    code: "#",
+    code: "https://github.com/orhanturkmenoglu/spring-security-mernis-auth"
+  },
+  {
+    title: "Afet-Radar – Real-Time Earthquake Tracker",
+    description: "Kullanıcıların geçmiş ve güncel depremleri görüntüleyebileceği, belirli büyüklüğün üzerindeki depremler için uyarı alabileceği gerçek zamanlı bir sistem.",
+    image: projectImg1,
+    tech: ["Spring Boot", "REST API", "WebSocket", "Real-Time Data"],
+    icons: [FaServer, FaCloud],
+    demo: "#",
+    code: "https://github.com/orhanturkmenoglu/afet-radar"
+  },
+  {
+    title: "GÖSTERİM360 – Smart Cinema Ticketing System",
+    description: "Sinema salonları için uçtan uca dijital biletleme sistemi. Yapay zekâ destekli koltuk önerisi, QR kodlu güvenli geçiş, hızlı işlem süreçleri ve SMS/email bildirimleri içerir.",
+    image: projectImg2,
+    tech: ["React", "Spring Boot", "AI Recommendation", "QR Code", "Stripe Payment", "JWT"],
+    icons: [FaReact, FaServer, FaMobileAlt, FaRobot],
+    demo: "#",
+    code: "https://github.com/orhanturkmenoglu/gosterim360"
   }
 ];
+
 
 
 export const workData = [
   {
-    role: "Senior Frontend Developer",
-    company: "TechCorp Inc.",
-    duration: "2020 - Present",
-    description:
-      "Leading frontend development for enterprise clients, implementing modern frameworks, and mentoring junior developers.",
+    role: "Senior Backend Developer",
+    company: "FinTech Solutions",
+    duration: "2021 - Present",
+    description: "Leading backend development, designing microservices, integrating payment systems, and mentoring junior developers.",
     color: "purple"
   },
   {
-    role: "Web Developer",
-    company: "Digital Solutions LLC",
-    duration: "2018 - 2020",
-    description:
-      "Developed and maintained web applications for various clients, focusing on responsive design and performance optimization.",
-    color: "pink"
+    role: "Full Stack Developer",
+    company: "Enterprise Apps Co.",
+    duration: "2018 - 2021",
+    description: "Developed scalable enterprise solutions, integrating secure authentication, cloud deployment, and modern frontend.",
+    color: "blue"
   },
   {
-    role: "Junior Developer",
-    company: "StartUp Ventures",
+    role: "Junior Backend Developer",
+    company: "TechStart Inc.",
     duration: "2016 - 2018",
-    description:
-      "Started my career building basic websites and gradually took on more complex projects as I expanded my skill set.",
-    color: "blue"
+    description: "Built foundational backend systems, learned best practices in microservices, Spring Boot, and database design.",
+    color: "pink"
   }
 ];

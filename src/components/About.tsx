@@ -19,7 +19,7 @@ const About = () => {
             About <span className="text-red-500">Me</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Passionate developer crafting modern, meaningful digital experiences.
+            Building scalable, secure, and impactful software with purpose.
           </p>
         </div>
 
@@ -32,7 +32,6 @@ const About = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            {/* Gradient border */}
             <div className="relative rounded-2xl p-[2px] bg-gradient-to-tr from-red-500 via-purple-500 to-blue-500 shadow-lg shadow-red-500/10">
               <img
                 src={assets.profileImg}
@@ -40,8 +39,6 @@ const About = () => {
                 className="rounded-2xl w-64 h-80 object-cover border-4 border-[#1d1d1d]"
               />
             </div>
-
-            {/* Glow effect */}
             <div className="absolute inset-0 blur-3xl opacity-25 bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 rounded-2xl"></div>
           </motion.div>
 
@@ -57,13 +54,23 @@ const About = () => {
             </h3>
 
             <p className="text-gray-300 leading-relaxed mb-6">
-              I’m a creative software developer focused on building elegant,
-              high-performance applications with great user experience.
+              I’m a passionate Java & Spring Boot developer specialized in
+              building enterprise-grade backend systems using microservices,
+              Clean Architecture, and Domain-Driven Design principles.
+            </p>
+
+            <p className="text-gray-300 leading-relaxed mb-6">
+              I design secure authentication and authorization flows using JWT,
+              OAuth2, and Keycloak — deploying scalable cloud solutions with
+              Docker, AWS, and Spring Cloud. My focus is on writing clean,
+              maintainable, and production-ready code.
             </p>
 
             <p className="text-gray-300 leading-relaxed mb-12">
-              Every line of code I write aims to be clean, efficient, and
-              purposeful — bridging backend power with seamless UI.
+              I also develop modern frontend experiences with React and
+              TailwindCSS, manage full-stack projects from backend logic to UI,
+              and share my technical insights on Medium and GitHub to help the
+              community grow.
             </p>
 
             {/* ===== Info Cards ===== */}

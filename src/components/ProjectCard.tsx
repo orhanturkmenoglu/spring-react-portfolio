@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const ProjectCard = ({ title, description, image, tech }) => {
+const ProjectCard = ({ title, description, image, tech,code,demo }) => {
   return (
     <motion.div
       whileHover={{ scale: 1.03 }}
@@ -53,7 +53,7 @@ const ProjectCard = ({ title, description, image, tech }) => {
           <div className="flex gap-3 mt-6">
             {/* ===== Code Button ===== */}
             <a
-              href="#"
+              href={code}
               className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium
     rounded-lg border border-purple-500/60 text-purple-300 
     bg-gradient-to-r from-purple-900/30 to-purple-800/10 
@@ -80,7 +80,7 @@ const ProjectCard = ({ title, description, image, tech }) => {
 
             {/* ===== Demo Button ===== */}
             <a
-              href="#"
+              href={demo}
               className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium 
     rounded-lg border border-pink-500/60 text-pink-300 
     bg-gradient-to-r from-pink-900/30 to-pink-800/10 
