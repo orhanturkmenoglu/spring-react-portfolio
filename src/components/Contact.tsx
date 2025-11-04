@@ -70,15 +70,15 @@ const Contact = () => {
             <div className="flex gap-6 pt-4">
               {[
                 {
-                  href: "https://github.com/orhant",
+                  href: "https://github.com/orhanturkmenoglu",
                   icon: <Github className="text-white w-6 h-6" />,
                 },
                 {
-                  href: "https://linkedin.com/in/orhant",
+                  href: "https://linkedin.com/in/orhanturkmenoglu",
                   icon: <Linkedin className="text-white w-6 h-6" />,
                 },
                 {
-                  href: "mailto:orhan.turkmenoglu@example.com",
+                  href: "mailto:orhantrkmn749@gmail.com",
                   icon: <Mail className="text-white w-6 h-6" />,
                 },
               ].map((social, index) => (

@@ -61,7 +61,8 @@ const Projects = () => {
         {/* ===== View More Button ===== */}
         <div className="flex justify-center mt-20">
           <motion.a
-            href="#"
+            href="https://github.com/orhanturkmenoglu"
+            target="_blank"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center gap-3 px-8 py-3 rounded-full 
