@@ -13,10 +13,17 @@ const About = () => {
       const response = await axios.get("http://localhost:8080/api/v1.0/abouts");
       if (response.status === 200) {
         setAboutInfoData(response.data);
+        localStorage.setItem("aboutInfoData", JSON.stringify(response.data));
         console.log("response data :", response.data);
       }
     } catch (error) {
       console.log("Error fetching about data", error);
+      const cachedData = localStorage.getItem("aboutInfoData");
+      if (cachedData) {
+        setAboutInfoData(JSON.parse(cachedData));
+      } else {
+        console.warn("No cached aboutInfoData found in localStorage");
+      }
     }
   };
 
@@ -96,7 +103,7 @@ const About = () => {
 
             {/* ===== Info Cards ===== */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              {aboutInfoData.map((item, index) => {
+              {aboutInfoData.data?.map((item, index) => {
                 const IconComponent = FaIcons[item.icon]; // 👈 stringi bileşene dönüştür
                 return (
                   <motion.div
