@@ -12,7 +12,7 @@ export const assets = {
     profileImg,
 };
 
-export const aboutInfo = [
+/* export const aboutInfo = [
   {
     icon: FaLightbulb,
     title: 'Innovative',
@@ -32,7 +32,7 @@ export const aboutInfo = [
     color: 'pink'
   }
 ];
-
+ */
 export const skills = [
   {
     title: 'Frontend Development',

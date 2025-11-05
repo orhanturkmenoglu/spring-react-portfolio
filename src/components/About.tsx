@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { assets /* aboutInfo */ } from "../assets/assets";
+import { assets  } from "../assets/assets";
 import axios from "axios";
 import * as FaIcons from "react-icons/fa";
 

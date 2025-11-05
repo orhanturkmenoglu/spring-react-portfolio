@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import DarkModeSwitch from "./DarkModeSwitch";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -16,18 +17,14 @@ const Navbar = () => {
     { name: "Contact", href: "/contact" },
   ];
 
-  // Scroll olunca arka plan değişsin
+  // Scroll olunca navbar opak hale gelsin
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleClick = () => {
-    setShowMenu(!showMenu);
-  };
+  const handleClick = () => setShowMenu(!showMenu);
 
   return (
     <nav
@@ -38,7 +35,7 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto flex justify-between items-center">
-        {/* Logo */}
+        {/* === Logo === */}
         <Link
           to="/"
           className="text-2xl md:text-3xl font-bold text-white tracking-wide"
@@ -48,7 +45,7 @@ const Navbar = () => {
         </Link>
 
         {/* === Desktop Menü === */}
-        <div className="hidden md:flex space-x-10">
+        <div className="hidden md:flex space-x-10 items-center">
           {navLinks.map((link, index) => (
             <Link
               to={link.href}
@@ -56,15 +53,17 @@ const Navbar = () => {
               className="relative text-gray-300 hover:text-red-500 font-medium transition-all duration-300 group"
             >
               {link.name}
-              <span
-                className="absolute left-0 -bottom-1 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"
-              ></span>
+              <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
             </Link>
           ))}
+
+          {/* === Dark Mode Switch === */}
+          <DarkModeSwitch />
         </div>
 
-        {/* === Mobil Menü Butonu === */}
-        <div className="md:hidden text-white text-2xl cursor-pointer">
+        {/* === Mobil Menü Butonu + Switch === */}
+        <div className="md:hidden flex items-center space-x-4 text-white text-2xl cursor-pointer">
+          <DarkModeSwitch />
           {showMenu ? (
             <FaXmark onClick={handleClick} />
           ) : (
@@ -75,7 +74,7 @@ const Navbar = () => {
 
       {/* === Mobil Menü === */}
       {showMenu && (
-        <div className="md:hidden mt-4 bg-[#121212] rounded-lg p-6 flex flex-col space-y-6 text-center">
+        <div className="md:hidden mt-4 bg-[#121212] dark:bg-gray-900 rounded-lg p-6 flex flex-col space-y-6 text-center shadow-lg">
           {navLinks.map((link, index) => (
             <Link
               to={link.href}
