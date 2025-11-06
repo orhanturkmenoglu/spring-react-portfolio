@@ -1,8 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { workData } from "../assets/assets";
+import { fetchWorkInfoList } from "./../utils/apiEndpoints";
 
 const Experience = () => {
+  const [workDataInfo, setWorkDataInfo] = useState([]);
+
+  useEffect(() => {
+    const loadWorkData = async () => {
+      try {
+        const response = await fetchWorkInfoList();
+        if (response.status === 200) {
+          setWorkDataInfo(response.data);
+          localStorage.setItem("WorkDataInfo", JSON.stringify(response.data));
+          console.log("Work data fetched successfully:", response.data);
+        }
+      } catch (error) {
+        console.error("Work data fetch failed:", error);
+        const cachedData = localStorage.getItem("WorkDataInfo");
+        if (cachedData) {
+          setWorkDataInfo(JSON.parse(cachedData));
+          console.log(
+            "Loaded work data from localStorage:",
+            JSON.parse(cachedData)
+          );
+        }
+      }
+    };
+    loadWorkData();
+  }, []);
   return (
     <motion.section
       id="experience"
@@ -29,7 +54,7 @@ const Experience = () => {
           <div className="absolute left-6 top-0 w-[3px] h-full bg-gradient-to-b from-red-500 via-purple-500 to-blue-500 rounded-full"></div>
 
           <div className="space-y-12 relative">
-            {workData.map((item, index) => (
+            {workDataInfo.map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: -50 }}

@@ -3,6 +3,10 @@ import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Github, Linkedin } from "lucide-react";
 
 const Contact = () => {
+
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+  }
   return (
     <motion.section
       id="contact"
@@ -41,17 +45,17 @@ const Contact = () => {
                 {
                   icon: <Mail className="text-red-400 w-6 h-6" />,
                   title: "Email",
-                  info: "orhan.turkmenoglu@example.com",
+                  info: "orhantrkmn749@gmail.com",
                 },
                 {
                   icon: <Phone className="text-red-400 w-6 h-6" />,
                   title: "Phone",
-                  info: "+90 555 123 4567",
+                  info: "+90 541 767 9626",
                 },
                 {
                   icon: <MapPin className="text-red-400 w-6 h-6" />,
                   title: "Location",
-                  info: "İstanbul, Türkiye",
+                  info: "Hatay, Türkiye",
                 },
               ].map((item, index) => (
                 <div key={index} className="flex items-center gap-4 mb-6">
@@ -95,7 +99,7 @@ const Contact = () => {
           </motion.div>
 
           {/* Sağ: İletişim Formu */}
-          <motion.form
+          <motion.form onClick={handleSubmit}
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}

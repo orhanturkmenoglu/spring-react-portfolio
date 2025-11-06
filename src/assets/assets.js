@@ -33,7 +33,7 @@ export const assets = {
   }
 ];
  */
-export const skills = [
+/* export const skills = [
   {
     title: 'Frontend Development',
     icon: FaReact,
@@ -71,85 +71,94 @@ export const skills = [
     tags: ['Git', 'GitHub', 'Jira', 'Postman', 'VSCode']
   }
 ];
-
+ */
 export const projects = [
   {
     title: "Money Manager – Personal Finance Tracker",
-    description: "Full-stack personal finance app with React, Tailwind CSS & Spring Boot. Track income, expenses, manage categories, apply filters, export data to Excel, and use secure JWT authentication.",
+    description:
+      "Full-stack personal finance app built with React, Tailwind CSS & Spring Boot. Track income, expenses, manage categories, apply filters, export data to Excel, and use secure JWT authentication.",
     image: projectImg1,
     tech: ["React", "Tailwind CSS", "Spring Boot", "JWT", "Email", "Excel Export"],
     icons: [FaReact, FaDatabase, FaServer],
     demo: "https://astonishing-rugelach-8e59b3.netlify.app",
-    code: "https://github.com/orhanturkmenoglu/money-manager"
+    code: "https://github.com/orhanturkmenoglu/money-manager",
   },
   {
     title: "E-Commerce SpringBoot – Microservices Platform",
-    description: "Mikroservis tabanlı e-commerce uygulaması. Servis kaydı, API Gateway, Resilience4J, RabbitMQ, Stripe ödeme ve otomatik sepet temizleme gibi modern mikroservis kavramlarını içerir.",
+    description:
+      "Microservices-based e-commerce application including service registration, API Gateway, Resilience4J, RabbitMQ, Stripe payment, and automatic cart cleanup — demonstrating modern microservice concepts.",
     image: projectImg2,
     tech: ["Spring Boot", "Spring Cloud", "Docker", "RabbitMQ", "Stripe", "JWT"],
     icons: [FaServer, FaDatabase, FaCloud, FaStripe],
     demo: "#",
-    code: "https://github.com/orhanturkmenoglu/e-commerce-springboot"
+    code: "https://github.com/orhanturkmenoglu/e-commerce-springboot",
   },
   {
     title: "Foodies – Full Stack Food Ordering Platform",
-    description: "React + Spring Boot tabanlı yemek sipariş uygulaması. JWT güvenlik, Stripe ödeme, admin paneli, mail yönetimi ve gerçek zamanlı sepet yönetimi içerir.",
+    description:
+      "A full-stack food ordering platform built with React and Spring Boot. Features JWT security, Stripe payment integration, admin panel, email management, and real-time cart synchronization.",
     image: projectImg3,
     tech: ["React", "Spring Boot", "JWT", "Stripe", "PostgreSQL", "Tailwind CSS"],
     icons: [FaReact, FaServer, FaStripe],
     demo: "https://astonishing-rugelach-8e59b3.netlify.app/",
-    code: "https://github.com/orhanturkmenoglu/foodies-netlify"
+    code: "https://github.com/orhanturkmenoglu/foodies-netlify",
   },
   {
     title: "SecurePay QR – Modern Payment Platform",
-    description: "Stripe ile entegre, gerçek zamanlı ödeme takibi ve otomatik QR kod üretimi sağlayan, güvenli ve ölçeklenebilir Spring Boot tabanlı ödeme platformu.",
+    description:
+      "A secure, scalable Spring Boot-based payment platform integrated with Stripe. Provides real-time transaction tracking and automatic QR code generation.",
     image: projectImg4,
     tech: ["Spring Boot", "Stripe API", "JWT", "QR Codes"],
     icons: [FaServer, FaStripe, FaMobileAlt],
     demo: "#",
-    code: "https://github.com/orhanturkmenoglu/securepay-qr"
+    code: "https://github.com/orhanturkmenoglu/securepay-qr",
   },
   {
     title: "Spring AI Image API",
-    description: "Yapay zekâ destekli görsel oluşturma REST API servisi. Spring Boot & WebClient ile OpenAI gibi AI modellerine istek gönderir, Base64 formatında görsel döner.",
+    description:
+      "AI-powered image generation REST API service. Built with Spring Boot and WebClient to send requests to AI models such as OpenAI, returning Base64-encoded images.",
     image: projectImg5,
     tech: ["Spring Boot", "OpenAI API", "REST API", "WebClient"],
     icons: [FaServer, FaRobot],
     demo: "#",
-    code: "https://github.com/orhanturkmenoglu/spring-ai-image-api"
+    code: "https://github.com/orhanturkmenoglu/spring-ai-image-api",
   },
   {
     title: "Spring Security Mernis Authentication",
-    description: "MER-NIS Web Servisi ile TCKN doğrulaması yapan, JWT tabanlı güvenli oturum yönetimi sağlayan Spring Security uygulaması.",
+    description:
+      "Spring Security application that performs Turkish ID verification via the MERNIS Web Service and provides secure JWT-based session management.",
     image: projectImg6,
     tech: ["Spring Boot", "Spring Security", "JWT", "MERNIS API"],
     icons: [FaServer, FaShieldAlt],
     demo: "#",
-    code: "https://github.com/orhanturkmenoglu/spring-security-mernis-auth"
+    code: "https://github.com/orhanturkmenoglu/spring-security-mernis-auth",
   },
   {
     title: "Afet-Radar – Real-Time Earthquake Tracker",
-    description: "Kullanıcıların geçmiş ve güncel depremleri görüntüleyebileceği, belirli büyüklüğün üzerindeki depremler için uyarı alabileceği gerçek zamanlı bir sistem.",
+    description:
+      "Real-time earthquake tracking system allowing users to view historical and live events, and receive alerts for earthquakes above a certain magnitude.",
     image: projectImg1,
     tech: ["Spring Boot", "REST API", "WebSocket", "Real-Time Data"],
     icons: [FaServer, FaCloud],
     demo: "#",
-    code: "https://github.com/orhanturkmenoglu/afet-radar"
+    code: "https://github.com/orhanturkmenoglu/afet-radar",
   },
   {
     title: "GÖSTERİM360 – Smart Cinema Ticketing System",
-    description: "Sinema salonları için uçtan uca dijital biletleme sistemi. Yapay zekâ destekli koltuk önerisi, QR kodlu güvenli geçiş, hızlı işlem süreçleri ve SMS/email bildirimleri içerir.",
+    description:
+      "An end-to-end digital ticketing system for cinemas featuring AI-powered seat recommendation, secure QR-based access, fast processing, and SMS/email notifications.",
     image: projectImg2,
     tech: ["React", "Spring Boot", "AI Recommendation", "QR Code", "Stripe Payment", "JWT"],
     icons: [FaReact, FaServer, FaMobileAlt, FaRobot],
     demo: "#",
-    code: "https://github.com/orhanturkmenoglu/gosterim360"
-  }
+    code: "https://github.com/orhanturkmenoglu/gosterim360",
+  },
 ];
 
 
 
-export const workData = [
+
+/* export const workData = [
   {
     role: "Senior Backend Developer",
     company: "FinTech Solutions",
@@ -172,3 +181,4 @@ export const workData = [
     color: "pink"
   }
 ];
+ */
