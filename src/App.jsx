@@ -1,13 +1,13 @@
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
-import Home from './pages/Home'
-import Navbar from "./components/Navbar.tsx";
-import About from './components/About.tsx';
-import Skills from './components/Skills.tsx';
-import Projects from './components/Projects.tsx';
-import Work from "./components/Work.tsx"
-import Contact from './components/Contact.tsx';
-import Footer from './components/Footer.tsx';
+import Home from './pages/Home.jsx'
+import Navbar from "./components/Navbar.jsx";
+import About from './components/About.jsx';
+import Skills from './components/Skills.jsx';
+import Projects from './components/Projects.jsx';
+import Work from "./components/Work.jsx"
+import Contact from './components/Contact.jsx';
+import Footer from './components/Footer.jsx';
 
 
 function App() {

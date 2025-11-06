@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { assets } from "../assets/assets";
+import { assets } from "../assets/assets.js";
 import * as FaIcons from "react-icons/fa";
-import { fetchAboutInfoList } from "../utils/apiEndpoints";
+import { fetchAboutInfoList } from "../utils/apiEndpoints.js";
 
 const About = () => {
   const [aboutInfoData, setAboutInfoData] = useState([]);

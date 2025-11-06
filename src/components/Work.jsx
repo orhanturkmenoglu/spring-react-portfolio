@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { fetchWorkInfoList } from "./../utils/apiEndpoints";
+import { fetchWorkInfoList } from "../utils/apiEndpoints";
 
 const Experience = () => {
   const [workDataInfo, setWorkDataInfo] = useState([]);
