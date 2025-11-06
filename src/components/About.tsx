@@ -1,35 +1,32 @@
 import  { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { assets  } from "../assets/assets";
-import axios from "axios";
 import * as FaIcons from "react-icons/fa";
+import {fetchAboutInfoList} from "../utils/apiEndpoints"
+
 
 const About = () => {
   const [aboutInfoData, setAboutInfoData] = useState([]);
   console.log("About Info :", aboutInfoData);
 
-  const fetchAboutInfoList = async () => {
-    try {
-      const response = await axios.get("http://localhost:8080/api/v1.0/abouts");
-      if (response.status === 200) {
-        setAboutInfoData(response.data);
-        localStorage.setItem("aboutInfoData", JSON.stringify(response.data));
-        console.log("response data :", response.data);
-      }
-    } catch (error) {
-      console.log("Error fetching about data", error);
-      const cachedData = localStorage.getItem("aboutInfoData");
-      if (cachedData) {
-        setAboutInfoData(JSON.parse(cachedData));
-      } else {
-        console.warn("No cached aboutInfoData found in localStorage");
-      }
-    }
-  };
-
   useEffect(() => {
-    fetchAboutInfoList();
+    const loadAboutInfo = async () => {
+      try {
+        const data = await fetchAboutInfoList(); 
+        setAboutInfoData(data);
+        localStorage.setItem("aboutInfoData", JSON.stringify(data));
+      } catch (error) {
+        console.error("Error fetching about data", error);
+        const cachedData = localStorage.getItem("aboutInfoData");
+        if (cachedData) {
+          setAboutInfoData(JSON.parse(cachedData));
+        }
+      }
+    };
+
+    loadAboutInfo();
   }, []);
+
 
   return (
     <motion.section
