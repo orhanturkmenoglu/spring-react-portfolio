@@ -1,73 +1,45 @@
-# React + TypeScript + Vite
+# Portfolio Service
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Portfolio Service**, geliştiricinin kişisel portfolyosunu yönetmek için tasarlanmış modern bir Spring Boot REST API’dir. Bu servis ile `About`, `Work Experience`, `Projects` ve `Skills` gibi portfolyo bölümleri kolayca yönetilebilir.  
 
-Currently, two official plugins are available:
+Amacı, frontend uygulamalarıyla (React, Angular, Vue vs.) hızlıca entegre edilebilecek bir backend çözümü sunmaktır.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Özellikler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **CRUD Operasyonları**: About, Work Experience, Projects ve Skills bölümleri için.
+- **MongoDB ile Veri Yönetimi**: Esnek ve hızlı veri işlemleri.
+- **Global Exception Handling**: Hatalar tek formatta, anlaşılır bir şekilde döner.
+- **Swagger/OpenAPI Desteği**: API’yi görselleştirme ve test etme imkânı.
+- **CORS Desteği**: Frontend uygulamalar için hazır.
+- **BaseResponse Yapısı**: Tüm API cevapları standart bir formatta döner.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Kullanılan Teknolojiler
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Java 17+
+- Spring Boot 3.x
+- Spring Data MongoDB
+- Lombok
+- Jakarta Validation (Bean Validation)
+- Springdoc OpenAPI (Swagger)
+- Maven
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## ⚡ Başlarken
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Ön Koşullar
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Java 17 veya üzeri
+- Maven 3.9 veya üzeri
+- MongoDB (varsayılan: `mongodb://localhost:27017/portfolio`)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Kurulum
+
+1. Repository’yi klonlayın:
+```bash
+git clone https://github.com/orhanturkmenoglu/portfolio-service.git
+cd portfolio-service
