@@ -1,7 +1,20 @@
 import { motion } from "framer-motion";
 import { assets } from "../assets/assets";
+import { useEffect } from "react";
+import axios from "axios";
+import { API_ENDPOINTS } from "../utils/apiEndpoints";
 
 const Hero = () => {
+  const downloadCv = () => {
+    const link = document.createElement("a");
+    link.href = "/Orhan_Turkmenoglu_CV.pdf";
+    link.download = "Orhan_Turkmenoglu_CV.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  
   return (
     <motion.section
       id="home"
@@ -53,12 +66,13 @@ const Hero = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <a
-              href="#projects"
-              className="px-6 py-3 bg-red-500 rounded-lg font-medium text-white hover:bg-red-600 transition duration-300 shadow-md hover:shadow-red-500/40"
+            <button
+              onClick={downloadCv}
+              className="px-6 py-3 bg-red-500 rounded-lg font-medium text-white hover:bg-red-600 
+              transition duration-300 shadow-md hover:shadow-red-500/40 cursor-pointer"
             >
-              View Projects
-            </a>
+              Download CV
+            </button>
 
             <a
               href="#contact"
