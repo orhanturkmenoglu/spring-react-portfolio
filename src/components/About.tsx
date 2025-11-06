@@ -1,9 +1,8 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { assets  } from "../assets/assets";
+import { assets } from "../assets/assets";
 import * as FaIcons from "react-icons/fa";
-import {fetchAboutInfoList} from "../utils/apiEndpoints"
-
+import { fetchAboutInfoList } from "../utils/apiEndpoints";
 
 const About = () => {
   const [aboutInfoData, setAboutInfoData] = useState([]);
@@ -12,7 +11,7 @@ const About = () => {
   useEffect(() => {
     const loadAboutInfo = async () => {
       try {
-        const data = await fetchAboutInfoList(); 
+        const data = await fetchAboutInfoList();
         setAboutInfoData(data);
         localStorage.setItem("aboutInfoData", JSON.stringify(data));
       } catch (error) {
@@ -26,7 +25,6 @@ const About = () => {
 
     loadAboutInfo();
   }, []);
-
 
   return (
     <motion.section
