@@ -1,37 +1,51 @@
 import { motion } from "framer-motion";
 import { assets } from "../assets/assets";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { API_ENDPOINTS, BASE_URL } from "../utils/apiEndpoints";
+import toast from "react-hot-toast";
+import { LoaderCircle } from "lucide-react";
 
 const Hero = () => {
+  const [loading, setLoading] = useState(false);
+
   const downloadCvPdf = async () => {
-  try {
-    const response = await axios.get("http://localhost:8080/api/v1.0/export/pdf", {
-      headers: {
-        "Content-Type": "application/pdf",
-      },
-      responseType:"blob"
-    });
+    setLoading(true);
+    try {
+      const response = await axios.get(
+        "http://localhost:8080/api/v1.0/export/pdf",
+        {
+          headers: {
+            "Content-Type": "application/pdf",
+          },
+          responseType: "blob",
+        }
+      );
 
-    if (!response.status ===200) {
-      throw new Error("Error downloading PDF.");
+      if (!response.status === 200) {
+        throw new Error("Error downloading PDF.");
+      }
+
+      const blob = await response.data; // PDF dosyasını binary olarak al
+      const url = window.URL.createObjectURL(blob); // geçici bir URL oluştur
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Orhan_Turkmenoglu_CV.pdf"; // indirilecek dosya adı
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
+
+      toast.success("Successfully downloaded CV PDF!"); // Başarı toast
+    } catch (error) {
+      console.error("Error downloading PDF:", error);
+      toast.error("Failed to download CV PDF.");
+    } finally {
+      setLoading(false);
     }
+  };
 
-    const blob = await response.data; // PDF dosyasını binary olarak al
-    const url = window.URL.createObjectURL(blob); // geçici bir URL oluştur
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "Orhan_Turkmenoglu_CV.pdf"; // indirilecek dosya adı
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    window.URL.revokeObjectURL(url);
-  } catch (error) {
-    console.error("Error downloading PDF:", error);
-  }
-};
-  
+
   return (
     <motion.section
       id="home"
@@ -84,11 +98,22 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <button
-              onClick={downloadCvPdf}
+              onClick={() => {
+                setTimeout(() => {
+                  downloadCvPdf();
+                }, 200);
+              }}
               className="px-6 py-3 bg-red-500 rounded-lg font-medium text-white hover:bg-red-600 
               transition duration-300 shadow-md hover:shadow-red-500/40 cursor-pointer"
             >
-              Download CV
+              {loading ? (
+                <>
+                  <LoaderCircle size={18} className="animate-spin h-5" />
+                  Downloading...
+                </>
+              ) : (
+                <>Download Cv</>
+              )}
             </button>
 
             <a

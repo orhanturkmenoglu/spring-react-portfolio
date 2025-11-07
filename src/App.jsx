@@ -8,6 +8,7 @@ import Projects from './components/Projects.jsx';
 import Work from "./components/Work.jsx"
 import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
+import { Toaster } from 'react-hot-toast';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
   return (
     <div>
       <Navbar/>
+      <Toaster/>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/about' element={<About/>}/>
