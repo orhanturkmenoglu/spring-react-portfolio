@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const BASE_URL = "https://portfolio-service-6em4.onrender.com/api/v1.0";
+export const BASE_URL = "http://localhost:8080/api/v1.0";
 
 export const API_ENDPOINTS = {
   ABOUT: "/abouts",
@@ -8,7 +8,7 @@ export const API_ENDPOINTS = {
   PROJECT: "/projects",
   SKILL: "/skills",
   WORK: "/works",
-  DOWNLOADCV:"/download"
+  DOWNLOADCV:"/export/pdf"
 };
 
 export const fetchAboutInfoList = async () => {

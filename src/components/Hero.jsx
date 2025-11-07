@@ -5,15 +5,32 @@ import axios from "axios";
 import { API_ENDPOINTS } from "../utils/apiEndpoints";
 
 const Hero = () => {
-  const downloadCv = () => {
-    const link = document.createElement("a");
-    link.href = "/Orhan_Turkmenoglu_CV.pdf";
-    link.download = "Orhan_Turkmenoglu_CV.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+  const downloadCvPdf = async () => {
+  try {
+    const response = await fetch(API_ENDPOINTS.DOWNLOADCV, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/pdf",
+      },
+    });
 
+    if (!response.ok) {
+      throw new Error("PDF indirilemedi!");
+    }
+
+    const blob = await response.blob(); // PDF dosyasını binary olarak al
+    const url = window.URL.createObjectURL(blob); // geçici bir URL oluştur
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "Orhan_Turkmenoglu_CV.pdf"; // indirilecek dosya adı
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    window.URL.revokeObjectURL(url);
+  } catch (error) {
+    console.error("Hata:", error);
+  }
+};
   
   return (
     <motion.section
@@ -67,7 +84,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <button
-              onClick={downloadCv}
+              onClick={downloadCvPdf}
               className="px-6 py-3 bg-red-500 rounded-lg font-medium text-white hover:bg-red-600 
               transition duration-300 shadow-md hover:shadow-red-500/40 cursor-pointer"
             >
