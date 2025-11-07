@@ -2,23 +2,23 @@ import { motion } from "framer-motion";
 import { assets } from "../assets/assets";
 import { useEffect } from "react";
 import axios from "axios";
-import { API_ENDPOINTS } from "../utils/apiEndpoints";
+import { API_ENDPOINTS, BASE_URL } from "../utils/apiEndpoints";
 
 const Hero = () => {
   const downloadCvPdf = async () => {
   try {
-    const response = await fetch(API_ENDPOINTS.DOWNLOADCV, {
-      method: "GET",
+    const response = await axios.get("http://localhost:8080/api/v1.0/export/pdf", {
       headers: {
         "Content-Type": "application/pdf",
       },
+      responseType:"blob"
     });
 
-    if (!response.ok) {
-      throw new Error("PDF indirilemedi!");
+    if (!response.status ===200) {
+      throw new Error("Error downloading PDF.");
     }
 
-    const blob = await response.blob(); // PDF dosyasını binary olarak al
+    const blob = await response.data; // PDF dosyasını binary olarak al
     const url = window.URL.createObjectURL(blob); // geçici bir URL oluştur
     const a = document.createElement("a");
     a.href = url;
@@ -28,7 +28,7 @@ const Hero = () => {
     a.remove();
     window.URL.revokeObjectURL(url);
   } catch (error) {
-    console.error("Hata:", error);
+    console.error("Error downloading PDF:", error);
   }
 };
   
