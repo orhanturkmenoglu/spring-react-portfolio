@@ -10,12 +10,11 @@ import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
 import { Toaster } from 'react-hot-toast';
 
-
 function App() {
 
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <Toaster/>
       <Routes>
         <Route path='/' element={<Home/>}/>

@@ -4,7 +4,7 @@ import { FaXmark } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import DarkModeSwitch from "./DarkModeSwitch";
 
-const Navbar = () => {
+const Navbar = ({darkMode,setDarkMode}) => {
   const [showMenu, setShowMenu] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
