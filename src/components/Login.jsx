@@ -1,13 +1,15 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { API_ENDPOINTS, BASE_URL } from "../utils/apiEndpoints";
+import toast from "react-hot-toast";
+import { LoaderCircle } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,27 +21,36 @@ const Login = () => {
     setError("");
 
     try {
-      // API call example
-      // await axios.post("/api/auth/login", formData);
-
-      setTimeout(() => {
-        setLoading(false);
-        alert("Login successful!"); // Demo purpose
-      }, 1000);
+      const { data, status } = await axios.post(
+        `${BASE_URL}${API_ENDPOINTS.LOGIN}`,
+        formData,
+        { headers: { "Content-Type": "application/json" } }
+      );
+      console.log(data);
+      console.log(status);
+      if (status === 201) {
+        setFormData({ email: "", password: "" });
+        toast.success("Successfully logged in!");
+        navigate("/");
+      }
     } catch (err) {
-      setLoading(false);
+      console.error(err);
+      console.log("Error ");
       setError("Invalid email or password!");
+      toast.error("Login failed! Check your credentials.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 px-4">
-      <div className="w-full max-w-md bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 transition-colors duration-300">
-        <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-100 text-center border-b pb-3">
+      <div className="w-full max-w-md bg-white dark:bg-gray-900 rounded-3xl shadow-xl p-6 sm:p-8 md:p-10 transition-colors duration-300">
+        <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-gray-100 border-b pb-3">
           🔑 Login
         </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-5">
+        <form onSubmit={handleSubmit} className="space-y-5 ">
           {/* Email */}
           <div>
             <label className="block text-sm font-semibold mb-2 text-gray-700 dark:text-gray-200">
@@ -52,7 +63,7 @@ const Login = () => {
               onChange={handleChange}
               placeholder="your.email@example.com"
               required
-              className="w-full px-4 py-2 rounded-xl border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-gray-100 outline-none transition-all duration-200"
+              className="w-full px-4 py-2 rounded-xl border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-indigo-500 bg-white dark:bg-gray-300 text-black outline-none transition-all duration-200"
             />
           </div>
 
@@ -68,7 +79,7 @@ const Login = () => {
               onChange={handleChange}
               placeholder="********"
               required
-              className="w-full px-4 py-2 rounded-xl border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-gray-100 outline-none transition-all duration-200"
+              className="w-full px-4 py-2 rounded-xl border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-indigo-500 bg-white dark:bg-gray-300 text-black outline-none transition-all duration-200"
             />
           </div>
 
@@ -83,9 +94,16 @@ const Login = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white font-semibold text-lg shadow-lg transition-all duration-300"
+            className="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white font-semibold text-lg shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
           >
-            {loading ? "Logging in..." : "Login"}
+            {loading ? (
+              <>
+                <LoaderCircle className="animate-spin h-5 w-5 text-white" />
+                Logging in...
+              </>
+            ) : (
+              "Login"
+            )}
           </button>
         </form>
 

@@ -8,7 +8,9 @@ export const API_ENDPOINTS = {
   PROJECT: "/projects",
   SKILL: "/skills",
   WORK: "/works",
-  DOWNLOADCV:"/export/pdf"
+  DOWNLOADCV:"/export/pdf",
+  LOGIN:"/auth/login",
+  REGISTER:"/auth/register"
 };
 
 export const fetchAboutInfoList = async () => {
