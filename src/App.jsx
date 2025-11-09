@@ -9,6 +9,8 @@ import Work from "./components/Work.jsx"
 import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
 import { Toaster } from 'react-hot-toast';
+import Register from './components/Register.jsx';
+import Login from './components/Login.jsx';
 
 function App() {
 
@@ -18,6 +20,8 @@ function App() {
       <Toaster/>
       <Routes>
         <Route path='/' element={<Home/>}/>
+        <Route path='/register' element={<Register/>}/>
+        <Route path='/login' element={<Login/>}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/skills' element={<Skills/>}/>
         <Route path='/projects' element={<Projects/>}/>
