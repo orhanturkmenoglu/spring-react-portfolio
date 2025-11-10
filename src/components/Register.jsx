@@ -1,4 +1,8 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { API_ENDPOINTS, BASE_URL } from "../utils/apiEndpoints";
+import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -10,28 +14,66 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setSuccess(false);
+  e.preventDefault();
+  setLoading(true);
+  setSuccess(false);
 
-    try {
-      // API call example
-      // await axios.post("/api/auth/register", formData);
+  try {
+    const response = await axios.post(
+      `${BASE_URL}${API_ENDPOINTS.REGISTER}`,
+      formData,
+      {
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+
+    if (response.status === 201) {
+      setSuccess(true);
+      setFormData({ fullName: "", email: "", password: "" });
+
+      toast.success("Registration successful! 🎉 Redirecting to login...", {
+          duration: 3000,
+          style: {
+            background: "#22c55e",
+            color: "#fff",
+            fontWeight: "500",
+          },
+        });
 
       setTimeout(() => {
-        setLoading(false);
-        setSuccess(true);
-      }, 1000);
-    } catch (err) {
+        navigate("/login");
+      }, 1500);
+    } else {
+        toast("Unexpected response received.", {
+          icon: "⚠️",
+        });
+      }
+  }  catch (err) {
+      console.error("❌ Registration failed:", err);
+
+      const errorMsg =
+        err.response?.data?.message ||
+        "Registration failed. Please try again later.";
+
+      toast.error(errorMsg, {
+        duration: 4000,
+        style: {
+          background: "#ef4444",
+          color: "#fff",
+          fontWeight: "500",
+        },
+      });
+    } finally {
       setLoading(false);
-      console.error(err);
     }
-  };
+};
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 px-4">
@@ -53,7 +95,7 @@ const Register = () => {
               onChange={handleChange}
               placeholder="e.g., John Doe"
               required
-              className="w-full px-4 py-2 rounded-xl border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-gray-100 outline-none transition-all duration-200"
+              className="w-full px-4 py-2 rounded-xl border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 text-black dark:text-white outline-none transition-all duration-200"
             />
           </div>
 
@@ -69,7 +111,7 @@ const Register = () => {
               onChange={handleChange}
               placeholder="john@example.com"
               required
-              className="w-full px-4 py-2 rounded-xl border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-gray-100 outline-none transition-all duration-200"
+              className="w-full px-4 py-2 rounded-xl border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 text-black dark:text-white outline-none transition-all duration-200"
             />
           </div>
 
@@ -85,7 +127,7 @@ const Register = () => {
               onChange={handleChange}
               placeholder="********"
               required
-              className="w-full px-4 py-2 rounded-xl border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-gray-100 outline-none transition-all duration-200"
+              className="w-full px-4 py-2 rounded-xl border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 text-black dark:text-white outline-none transition-all duration-200"
             />
           </div>
 
@@ -108,9 +150,9 @@ const Register = () => {
 
         <p className="text-center text-gray-500 dark:text-gray-400 mt-4">
           Already have an account?{" "}
-          <a href="/login" className="text-indigo-500 hover:underline">
+          <Link to="/login" className="text-indigo-500 hover:underline">
             Login
-          </a>
+          </Link>
         </p>
       </div>
     </div>

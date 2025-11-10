@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { API_ENDPOINTS, BASE_URL } from "../utils/apiEndpoints";
 import toast from "react-hot-toast";
 import { LoaderCircle } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -109,9 +109,9 @@ const Login = () => {
 
         <p className="text-center text-gray-500 dark:text-gray-400 mt-4">
           Don't have an account?{" "}
-          <a href="/register" className="text-indigo-500 hover:underline">
+          <Link to="/register" className="text-indigo-500 hover:underline">
             Register
-          </a>
+          </Link>
         </p>
       </div>
     </div>
