@@ -31,7 +31,7 @@ const Login = () => {
       if (status === 201) {
         setFormData({ email: "", password: "" });
         toast.success("Successfully logged in!");
-        navigate("/");
+        navigate("/")
       }
     } catch (err) {
       console.error(err);
